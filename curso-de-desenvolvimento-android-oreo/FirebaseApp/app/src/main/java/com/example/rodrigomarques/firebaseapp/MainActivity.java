@@ -1,16 +1,16 @@
 package com.example.rodrigomarques.firebaseapp;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -95,12 +95,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
-        /*Gerar Identificador unico*/
+        /*Gerar Identificador unico
         Usuario usuario = new Usuario();
-        usuario.setNome("Rodrigo");
-        usuario.setSobrenome("Marques");
-        usuario.setIdade(25);
+        usuario.setNome("Mario");
+        usuario.setSobrenome("Super");
+        usuario.setIdade(20);
 
-        usuarios.push().setValue(usuario);
+        usuarios.push().setValue(usuario);*/
+
+        /*Filtro*/
+
+//        DatabaseReference usuarioPesquisa = usuarios.child("-LG_aGuNtz0lFBlhoXcR");
+
+//        Query usuarioPesquisa = usuarios.orderByChild("nome").equalTo("Solano");
+//        Query usuarioPesquisa = usuarios.orderByKey().limitToFirst(3);
+        Query usuarioPesquisa = usuarios.orderByKey().limitToLast(3);
+
+        usuarioPesquisa.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()){
+//                    Usuario usuario = dataSnapshot.getValue(Usuario.class);
+//                    Log.i("Dados do usuário", "nome: " + usuario.getNome());
+                }
+
+                Log.i("Dados do usuário", dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
