@@ -109,7 +109,19 @@ public class MainActivity extends AppCompatActivity {
 
 //        Query usuarioPesquisa = usuarios.orderByChild("nome").equalTo("Solano");
 //        Query usuarioPesquisa = usuarios.orderByKey().limitToFirst(3);
-        Query usuarioPesquisa = usuarios.orderByKey().limitToLast(3);
+//        Query usuarioPesquisa = usuarios.orderByKey().limitToLast(3);
+
+        // Maior ou igual (>=)
+        //Query usuarioPesquisa = usuarios.orderByChild("idade").startAt(45);
+
+        // Menor ou igual (<=)
+        //Query usuarioPesquisa = usuarios.orderByChild("idade").endAt(30);
+
+        //Entre doi valores
+//        Query usuarioPesquisa = usuarios.orderByChild("idade").startAt(20).endAt(30);
+
+        // Filtrar palavras
+        Query usuarioPesquisa = usuarios.orderByChild("nome").startAt("Maria").endAt("Mariu" + "\uf8ff");
 
         usuarioPesquisa.addValueEventListener(new ValueEventListener() {
             @Override
