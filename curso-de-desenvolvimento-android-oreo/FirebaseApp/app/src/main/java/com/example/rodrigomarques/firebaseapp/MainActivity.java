@@ -1,13 +1,23 @@
 package com.example.rodrigomarques.firebaseapp;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +58,34 @@ public class MainActivity extends AppCompatActivity {
                 // (dados da imagem)
                 byte[] dadosImagem = baos.toByteArray();
 
+                // Define nós para o storage
+                StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                StorageReference imagens = storageReference.child("imagens");
+
+                // Nome da imagem
+                String nomeArquivo = UUID.randomUUID().toString();
+                StorageReference imagemRef = imagens.child(nomeArquivo + ".jpeg");
+
+                // Retorna objeto que irá controlar o upload
+                UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
+
+                uploadTask.addOnFailureListener(MainActivity.this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this,
+                                "Upload da imagem falhou: " + e.getMessage().toString(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                }).addOnSuccessListener(MainActivity.this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                        Uri url = taskSnapshot.getDownloadUrl();
+                        Toast.makeText(MainActivity.this,
+                                "Sucesso ao fazer upload: " + url.toString(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
 
