@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 StorageReference imagens = storageReference.child("imagens");
 
                 // Nome da imagem
-                String nomeArquivo = UUID.randomUUID().toString();
+                /*String nomeArquivo = UUID.randomUUID().toString();
                 StorageReference imagemRef = imagens.child(nomeArquivo + ".jpeg");
 
                 // Retorna objeto que irá controlar o upload
@@ -85,12 +85,30 @@ public class MainActivity extends AppCompatActivity {
                                 "Sucesso ao fazer upload: " + url.toString(),
                                 Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
+
+                // Deletando Imagem
+                /*StorageReference imagemRef = imagens.child("celular.jpeg");
+                imagemRef.delete().addOnFailureListener(MainActivity.this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this,
+                                "Erro ao deletar",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }).addOnSuccessListener(MainActivity.this, new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MainActivity.this,
+                                "Sucesso ao deletar",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });*/
+
+                // Baixar
+//                StorageReference imagemRef = imagens.child("celular.jpeg");
             }
         });
-
-
-
 
 
 
