@@ -1,29 +1,61 @@
 package com.example.rodrigomarques.firebaseapp;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import java.io.ByteArrayOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
     // Manipula o banco de dados
-    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+   /* private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
     // Manipula os usuários
-    private FirebaseAuth usuario = FirebaseAuth.getInstance();
+    private FirebaseAuth usuario = FirebaseAuth.getInstance();*/
+
+
+    private ImageView imageFoto;
+    private Button buttonUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imageFoto = findViewById(R.id.imageFoto);
+        buttonUpload = findViewById(R.id.buttonFoto);
+
+        buttonUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Configura para imagem ser salva em memória
+                imageFoto.setDrawingCacheEnabled(true);
+                imageFoto.buildDrawingCache();
+
+                // Recupera bitmap da imagem (image a ser carregada)
+                Bitmap bitmap = imageFoto.getDrawingCache();
+
+                // Comprimo bitmap para um formato png/jpeg
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 75, baos);
+
+                // Converte o baos para pixel brutos em uma matriz de bytes
+                // (dados da imagem)
+                byte[] dadosImagem = baos.toByteArray();
+
+            }
+        });
+
+
+
+
+
+
 
         /* Criação de usuário
         usuario.createUserWithEmailAndPassword("rodrigo@gmail.com", "ro0430")
@@ -63,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
         /* Referencia de Nós para persistencia
-        DatabaseReference produtos = reference.child("produtos");*/
-        DatabaseReference usuarios = reference.child("usuarios");
+        DatabaseReference produtos = reference.child("produtos");
+        DatabaseReference usuarios = reference.child("usuarios");*/
 
 
         /* Salvar dados no Firebase
@@ -120,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         //Entre doi valores
 //        Query usuarioPesquisa = usuarios.orderByChild("idade").startAt(20).endAt(30);
 
-        // Filtrar palavras
+        /* Filtrar palavras
         Query usuarioPesquisa = usuarios.orderByChild("nome").startAt("Maria").endAt("Mariu" + "\uf8ff");
 
         usuarioPesquisa.addValueEventListener(new ValueEventListener() {
@@ -139,6 +171,6 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
     }
 }
