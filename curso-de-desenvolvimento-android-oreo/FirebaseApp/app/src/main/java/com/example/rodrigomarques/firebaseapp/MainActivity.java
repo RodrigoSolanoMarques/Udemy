@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -105,8 +107,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });*/
 
-                // Baixar
-//                StorageReference imagemRef = imagens.child("celular.jpeg");
+                // Baixar imagem
+                StorageReference imagemRef = imagens.child("celular.jpeg");
+                Glide.with(MainActivity.this)
+                        .using(new FirebaseImageLoader())
+                        .load(imagemRef)
+                        .into(imageFoto);
             }
         });
 
