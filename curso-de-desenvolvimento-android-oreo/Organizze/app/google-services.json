@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "498690931236",
+    "firebase_url": "https://organizze-ae5ad.firebaseio.com",
+    "project_id": "organizze-ae5ad",
+    "storage_bucket": "organizze-ae5ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498690931236:android:0415b9da7889721f",
+        "android_client_info": {
+          "package_name": "br.com.rodrigosolanomarques.organizze"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498690931236-nic99n1ok25f7saakuftu9hgpsnkrd45.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.rodrigosolanomarques.organizze",
+            "certificate_hash": "99734c0352d06d444223c495c717851a207739a6"
+          }
+        },
+        {
+          "client_id": "498690931236-hhdc8rdvmc23184hj4gjfjtmf70jr18e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIiLIkj4apBhnVJHwBNA8k8XVC8T9C4Qw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498690931236-hhdc8rdvmc23184hj4gjfjtmf70jr18e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
