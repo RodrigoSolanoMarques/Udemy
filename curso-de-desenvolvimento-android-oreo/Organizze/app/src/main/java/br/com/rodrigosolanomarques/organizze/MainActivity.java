@@ -1,6 +1,7 @@
 package br.com.rodrigosolanomarques.organizze;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
@@ -34,5 +35,18 @@ public class MainActivity extends IntroActivity {
                 .background(android.R.color.white)
                 .fragment(R.layout.intro_4)
                 .build());
+
+        addSlide(new FragmentSlide.Builder()
+                .background(android.R.color.white)
+                .fragment(R.layout.intro_cadastro)
+                .build());
+    }
+
+    public void btEntrar(View view){
+
+    }
+
+    public void btCadastrar(View view){
+
     }
 }
