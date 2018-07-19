@@ -86,11 +86,11 @@ public class CadastroActivity extends AppCompatActivity {
                                 throw task.getException();
                             } catch (FirebaseAuthWeakPasswordException e) {
                                 exception = "Digite uma senha mais forte!";
-                            }catch (FirebaseAuthInvalidCredentialsException e){
+                            } catch (FirebaseAuthInvalidCredentialsException e) {
                                 exception = "Por favor, digite um e-mail valido";
-                            }catch (FirebaseAuthUserCollisionException e){
+                            } catch (FirebaseAuthUserCollisionException e) {
                                 exception = "Está conta já está cadastrada";
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 exception = "Erro ao cadastrar usuário: " + e.getMessage();
                                 e.printStackTrace();
                             }
