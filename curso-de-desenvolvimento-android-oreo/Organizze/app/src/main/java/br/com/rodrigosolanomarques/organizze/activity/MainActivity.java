@@ -1,4 +1,4 @@
-package br.com.rodrigosolanomarques.organizze;
+package br.com.rodrigosolanomarques.organizze.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
+import br.com.rodrigosolanomarques.organizze.R;
 import br.com.rodrigosolanomarques.organizze.activity.CadastroActivity;
 import br.com.rodrigosolanomarques.organizze.activity.LoginActivity;
 
