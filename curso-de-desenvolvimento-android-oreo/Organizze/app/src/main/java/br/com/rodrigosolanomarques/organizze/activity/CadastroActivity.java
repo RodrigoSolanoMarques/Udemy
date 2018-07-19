@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import br.com.rodrigosolanomarques.organizze.R;
 import br.com.rodrigosolanomarques.organizze.config.ConfiguracaoFirebase;
@@ -69,7 +70,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     public void cadastrarUsuario() {
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        autenticacao.signInWithEmailAndPassword(usuario.getNome(), usuario.getEmail())
+        autenticacao.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
